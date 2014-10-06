@@ -1,7 +1,7 @@
 {
     "name": "hlacos/attachment",
     "description": "Laravel attachment bundle",
-    "keywords": ["laravel", "attachment", "eloquent"]
+    "keywords": ["laravel", "attachment", "eloquent"],
     "license": "MIT",
     "authors": [
         {
