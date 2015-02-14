@@ -1,5 +1,5 @@
 <?php
 
 return array(
-    'folder' => '/attachments/'
+    'folder' => 'attachments'
 );

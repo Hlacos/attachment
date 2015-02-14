@@ -84,8 +84,8 @@ class Attachment extends Eloquent {
      * @return bool
      */
     public function moveFile($path) {
-        if (!file_exists(public_path().$this->basePath())) {
-            mkdir(public_path().$this->basePath(), 0777, true);
+        if (!file_exists(public_path().'/'.$this->basePath())) {
+            mkdir(public_path().'/'.$this->basePath(), 0777, true);
         }
 
         return rename($path, $this->publicPath());
