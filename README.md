@@ -28,6 +28,15 @@ $attachment->attachable()->associate($relatedModel);
 $attachment->save();
 </pre>
 
+## Override table
+
+Extend Hlacos\Attachment\Attachment and set the $table attribute.
+
+## Set uploadable image required sizes
+
+Extend Hlacos\Attachment\Attachment and set the $sizes array attribute.
+In the array sets the width of the required images;
+
 # Related models
 
 You can set polymoprhic relations in the realted models.

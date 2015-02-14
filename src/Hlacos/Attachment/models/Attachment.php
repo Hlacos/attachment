@@ -83,7 +83,7 @@ class Attachment extends Eloquent {
      */
     public function moveFile($path) {
         if (!file_exists(public_path().$this->basePath())) {
-            mkdir(public_path().$this->basePath());
+            mkdir(public_path().$this->basePath(), 0777, true);
         }
 
         return rename($path, $this->publicPath());
@@ -121,7 +121,9 @@ class Attachment extends Eloquent {
 
     private function basePath() {
         //TODO: könyvtárszerkezetet módosítani, esetleg uuid-s megoldással.
-        return Config::get('attachment::attachment.folder').'/'.self::sanitize(get_class($this), true, true).'/'.$this->id.'/';
+        return Config::get('attachment::attachment.folder').'/'
+            .self::sanitize(get_class($this), true, true)
+            .'/'.$this->id.'/';
     }
 
     private function publicFilename() {
@@ -150,7 +152,7 @@ class Attachment extends Eloquent {
             $source = imagecreatefromjpeg($this->publicPath());
             imagecopyresized($thumb, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
             imagejpeg($thumb, $this->publicPath($size));
-        } elseif ($this->extension == '.jpeg') {
+        } elseif ($this->extension == 'jpeg') {
             $source = imagecreatefromjpeg($this->publicPath());
             imagecopyresized($thumb, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
             imagejpeg($thumb, $this->publicPath($size));
