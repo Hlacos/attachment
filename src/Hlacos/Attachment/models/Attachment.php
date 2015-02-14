@@ -47,6 +47,8 @@ class Attachment extends Eloquent {
      * @return bool
      */
     public function save(array $options = array()) {
+        parent::save($options);
+
         if ($this->moveFile($this->path)) {
             if (count($this->sizes)) {
                 foreach($this->sizes as $size) {
