@@ -9,7 +9,7 @@ It's under development, not recommended for production use!
 1. add bundle to composer: "hlacos/attachment": "dev-master"
 2. composer install
 3. add service provider to the providers list: 'Hlacos\Joboquent\AttachmentServiceProvider'
-4. php artisan migrate --package="hlacos/joboquent"
+4. php artisan migrate --package="hlacos/attachment"
 5. create directory: public/attachments
 6. let it write by the web server
 
@@ -30,7 +30,7 @@ $attachment->save();
 
 # Related models
 
-You can set polymoprhic relations.
+You can set polymoprhic relations in the realted models.
 
 <pre>
 public function attachment() {
