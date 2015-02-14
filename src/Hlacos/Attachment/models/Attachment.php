@@ -125,7 +125,7 @@ class Attachment extends Eloquent {
     private function basePath() {
         //TODO: könyvtárszerkezetet módosítani, esetleg uuid-s megoldással.
         return Config::get('attachment::attachment.folder').'/'
-            .self::sanitize(get_class($this), true, true)
+            .self::sanitize($this->get_real_class(), true, true)
             .'/'.$this->id.'/';
     }
 
@@ -178,5 +178,15 @@ class Attachment extends Eloquent {
                 mb_strtolower($clean, 'UTF-8') :
                 strtolower($clean) :
             $clean;
+    }
+
+    private function get_real_class() {
+        $classname = get_class($this);
+
+        if (preg_match('@\\\\([\w]+)$@', $classname, $matches)) {
+            $classname = $matches[1];
+        }
+
+        return $classname;
     }
 }
