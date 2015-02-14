@@ -113,11 +113,12 @@ class Attachment extends Eloquent {
      * @return string
      */
     public function publicUrl($size = null) {
+        $publicUrl = asset($this->publicFilename());
+
         if ($size) {
-            $publicUrl = parent::publicUrl();
             return str_replace('.'.$this->extension, '_'.$size.'x'.$size.'.'.$this->extension, $publicUrl);
         } else {
-            return parent::publicUrl();
+            return $publicUrl;
         }
     }
 
