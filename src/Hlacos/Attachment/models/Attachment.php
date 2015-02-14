@@ -124,7 +124,7 @@ class Attachment extends Eloquent {
 
     private function basePath() {
         //TODO: könyvtárszerkezetet módosítani, esetleg uuid-s megoldással.
-        return Config::get('attachment::attachment.folder').'/'
+        return '/'.Config::get('attachment::attachment.folder').'/'
             .self::sanitize($this->get_real_class(), true, true)
             .'/'.$this->id.'/';
     }
